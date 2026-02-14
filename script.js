@@ -50,7 +50,7 @@ const categories = {
 
 let currentCategory = null;
 let currentJokeText = "";
-let jokeHistory = [];           // array of strings (joke texts)
+let jokeHistory = [];
 let historyIndex = -1;
 let favorites = JSON.parse(localStorage.getItem("favoriteJokes") || "[]");
 
@@ -79,7 +79,7 @@ function startCategory(key) {
             showCurrentJoke();
         }
     } else {
-        getJoke();  // load first joke
+        getJoke();
     }
 
     document.getElementById("category-screen").classList.remove("active");
@@ -151,7 +151,6 @@ function toggleFavorite() {
     localStorage.setItem("favoriteJokes", JSON.stringify(favorites));
     updateLoveButton();
 
-    // If we are in favorites view and removed the current one
     if (currentCategory.isFavorites && index !== -1) {
         jokeHistory = [...favorites];
         if (jokeHistory.length === 0) {
@@ -178,4 +177,4 @@ function nextJoke() {
     } else {
         getJoke();
     }
-    }
+                }
