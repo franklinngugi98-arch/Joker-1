@@ -32,6 +32,10 @@
                 <span class="emoji">👨‍👦</span>
                 <span>Dad Jokes</span>
             </button>
+            <button class="category-btn" onclick="startCategory('favorites')">
+                <span class="emoji">❤️</span>
+                <span>My Favorites</span>
+            </button>
         </div>
     </div>
 
@@ -46,10 +50,13 @@
         <h1 id="category-title">Jokes</h1>
         
         <div id="joke-container">
-            <p id="joke">Tap "New Joke" to start laughing</p>
+            <p id="joke">Tap "New Joke" or swipe → to start</p>
         </div>
 
-        <button onclick="getJoke()">New Joke 🎉</button>
+        <div class="actions">
+            <button id="like-btn" class="like-btn" onclick="toggleLike()" aria-label="Like joke">♡</button>
+            <button class="action-btn" onclick="getJoke()">New Joke 🎉</button>
+        </div>
     </div>
 
 </div>
@@ -60,4 +67,4 @@
 
 <script src="script.js"></script>
 </body>
-</html>
+    </html>
