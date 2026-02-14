@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <title>Joke Generator 🎭</title>
@@ -12,36 +12,43 @@
 <body>
 <div class="container">
 
-    <!-- Category Selection Screen -->
+    <!-- Category Selection -->
     <div id="category-screen" class="screen active">
         <h1>Pick Your Humor</h1>
         <div class="category-grid">
-            <button class="category-btn" onclick="startJokes('general')">
+            <button class="category-btn" onclick="startCategory('general')">
                 <span class="emoji">😂</span>
                 <span>General Jokes</span>
             </button>
-            <button class="category-btn" onclick="startJokes('puns')">
+            <button class="category-btn" onclick="startCategory('puns')">
                 <span class="emoji">🤪</span>
                 <span>Puns</span>
             </button>
-            <button class="category-btn" onclick="startJokes('onelines')">
+            <button class="category-btn" onclick="startCategory('onelines')">
                 <span class="emoji">⚡</span>
                 <span>One-liners</span>
             </button>
-            <button class="category-btn" onclick="startJokes('dad')">
+            <button class="category-btn" onclick="startCategory('dad')">
                 <span class="emoji">👨‍👦</span>
                 <span>Dad Jokes</span>
             </button>
         </div>
     </div>
 
-    <!-- Joke Display Screen -->
+    <!-- Joke Screen -->
     <div id="joke-screen" class="screen">
         <button class="back-btn" onclick="showCategories()">← Back</button>
+        
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+            <span id="theme-icon">☀️</span>
+        </button>
+
         <h1 id="category-title">Jokes</h1>
+        
         <div id="joke-container">
             <p id="joke">Tap "New Joke" to start laughing</p>
         </div>
+
         <button onclick="getJoke()">New Joke 🎉</button>
     </div>
 
@@ -49,7 +56,6 @@
 
 <audio id="laughSound" preload="auto">
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-cartoon-quick-satisfied-laugh-2149.mp3" type="audio/mpeg">
-    <!-- For better offline support later: download a short .mp3 and reference it here -->
 </audio>
 
 <script src="script.js"></script>
