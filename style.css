@@ -1,159 +1,39 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ... previous styles remain ... add/replace these parts */
 
-:root {
-    --bg: #ffffff;
-    --text: #121212;
-    --card: rgba(0,0,0,0.04);
-    --accent: #ff9800;
-    --accent-dark: #e68900;
-    --border: rgba(0,0,0,0.08);
-}
-
-[data-theme="dark"] {
-    --bg: #0f0f0f;
-    --text: #f0f0f0;
-    --card: rgba(255,255,255,0.06);
-    --accent: #ffb74d;
-    --accent-dark: #ffa726;
-    --border: rgba(255,255,255,0.12);
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    background: var(--bg);
-    color: var(--text);
-    transition: background 0.5s ease, color 0.5s ease;
-}
-
-.container {
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 24px 16px;
-    height: 100vh;
+.actions {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 48px;
-    color: var(--accent);
-}
-
-.screen {
-    display: none;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1;
-}
-
-.screen.active {
-    display: flex;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 32px;
     width: 100%;
 }
 
-.category-btn {
-    background: var(--card);
-    border: 2px solid var(--accent);
-    border-radius: 20px;
-    padding: 32px 16px;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--text);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-}
-
-.category-btn:hover {
-    background: rgba(255,152,0,0.15);
-    transform: translateY(-6px);
-}
-
-.category-btn .emoji {
-    font-size: 3.5rem;
-}
-
-.back-btn,
-.theme-btn {
-    position: absolute;
-    top: 24px;
-    background: var(--card);
-    color: var(--text);
+.like-btn {
+    background: transparent;
     border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    font-size: 1.4rem;
+    font-size: 2.8rem;
+    color: #ff5252;
     cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: transform 0.2s;
 }
 
-.back-btn { left: 16px; }
-.theme-btn { right: 16px; }
+.like-btn.liked {
+    color: #ff1744;
+    transform: scale(1.2);
+}
 
-.back-btn:hover,
-.theme-btn:hover {
-    background: rgba(255,152,0,0.25);
-    transform: scale(1.1);
+.like-btn:hover {
+    transform: scale(1.15);
 }
 
 #joke-container {
-    background: var(--card);
-    padding: 40px 24px;
-    border-radius: 24px;
-    min-height: 220px;
-    margin: 32px 0 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    line-height: 1.5;
-    width: 100%;
-    border: 1px solid var(--border);
+    /* make it swipe-friendly */
+    touch-action: pan-y; /* allows vertical scroll if needed, but horizontal swipe ok */
+    user-select: none;
 }
 
-#joke {
-    opacity: 0;
-    transition: opacity 0.7s ease;
+/* Optional: subtle swipe hint animation (fade in/out) */
+@keyframes swipe-hint {
+    0%, 100% { opacity: 0.3; transform: translateX(0); }
+    50% { opacity: 0.8; transform: translateX(20px); }
 }
-
-button.action-btn {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 18px 56px;
-    font-size: 1.3rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 6px 20px rgba(255,152,0,0.3);
-}
-
-button.action-btn:hover {
-    background: var(--accent-dark);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(255,152,0,0.4);
-    }
