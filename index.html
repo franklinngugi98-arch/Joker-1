@@ -1,64 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Joke Generator 🎭</title>
+    <title>Jokes Generator 🎭</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ff9800">
 </head>
 <body>
 <div class="container">
+    <h1 class="greeting">GREETINGS BY knarf 🎭</h1>
+    <h2>😂 Simple Joke Generator</h2>
 
     <!-- Category Selection -->
     <div id="category-screen" class="screen active">
-        <h1>Pick Your Humor</h1>
-        <div class="category-grid">
-            <button class="category-btn" onclick="startCategory('general')">
-                <span class="emoji">😂</span>
-                <span>General Jokes</span>
-            </button>
-            <button class="category-btn" onclick="startCategory('puns')">
-                <span class="emoji">🤪</span>
-                <span>Puns</span>
-            </button>
-            <button class="category-btn" onclick="startCategory('onelines')">
-                <span class="emoji">⚡</span>
-                <span>One-liners</span>
-            </button>
-            <button class="category-btn" onclick="startCategory('dad')">
-                <span class="emoji">👨‍👦</span>
-                <span>Dad Jokes</span>
-            </button>
-            <button class="category-btn" onclick="startCategory('favorites')">
-                <span class="emoji">❤️</span>
-                <span>My Favorites</span>
-            </button>
+        <h2>Choose your humor style</h2>
+        <div class="category-buttons">
+            <button onclick="startCategory('general')">General Jokes 😂</button>
+            <button onclick="startCategory('puns')">Puns 🤪</button>
+            <button onclick="startCategory('onelines')">One-liners ⚡</button>
+            <button onclick="startCategory('dad')">Dad Jokes 👨‍👦</button>
+            <button onclick="startCategory('favorites')">My Favorites ❤️</button>
         </div>
     </div>
 
-    <!-- Joke Screen -->
+    <!-- Joke View -->
     <div id="joke-screen" class="screen">
-        <button class="back-btn" onclick="showCategories()">← Back</button>
-        
-        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
-            <span id="theme-icon">☀️</span>
-        </button>
+        <button class="back-btn" onclick="showCategories()">← Back to categories</button>
+        <h2 id="category-title">Jokes</h2>
 
-        <h1 id="category-title">Jokes</h1>
-        
         <div id="joke-container">
-            <p id="joke">Tap "New Joke" or swipe → to start</p>
+            <p id="joke">Click to get a joke!</p>
         </div>
 
-        <div class="actions">
-            <button id="like-btn" class="like-btn" onclick="toggleLike()" aria-label="Like joke">♡</button>
-            <button class="action-btn" onclick="getJoke()">New Joke 🎉</button>
+        <div class="controls">
+            <button id="prevBtn" onclick="prevJoke()">← Previous</button>
+            <button id="loveBtn" onclick="toggleFavorite()">♡</button>
+            <button id="nextBtn" onclick="nextJoke()">Next →</button>
         </div>
     </div>
-
 </div>
 
 <audio id="laughSound" preload="auto">
@@ -67,4 +49,4 @@
 
 <script src="script.js"></script>
 </body>
-    </html>
+                </html>
