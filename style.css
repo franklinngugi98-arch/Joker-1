@@ -1,33 +1,86 @@
 body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    background-color: #1e1e1e;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0d0d0d, #2b001f);
+    background-image: url('joker-background.png'); /* Joker Ace card style */
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #fff;
-    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
 }
 
-h1 {
-    color: #ff9800; /* make greeting stand out */
-    font-size: 28px;
+.container {
+    text-align: center;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(0,0,0,0.6); /* dark overlay for readability */
+    box-shadow: 0 0 30px rgba(255,255,255,0.1);
+}
+
+.greeting {
+    color: #ff9800;
+    font-weight: 600;
+    font-size: 32px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
     margin-bottom: 10px;
+    text-shadow: 2px 2px #000;
 }
 
 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+#joke-container {
+    background: linear-gradient(135deg, #ff0080, #ffcd00);
+    padding: 20px;
+    border-radius: 12px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #111;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 28px;
     font-size: 18px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
-    background-color: #ff9800;
-    color: white;
+    background: linear-gradient(135deg, #ff9800, #ffcc33);
+    color: #111;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 button:hover {
-    background-color: #e68a00;
+    background: linear-gradient(135deg, #ffcc33, #ff9800);
+    transform: scale(1.08);
 }
+
+/* Greeting fade in */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Confetti container */
+#confetti {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 10;
+        }
