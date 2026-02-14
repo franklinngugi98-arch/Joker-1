@@ -23,35 +23,5 @@ async function getJoke() {
         }
 
         jokeEl.style.opacity = 1;
-        createConfetti(); // Add confetti effect
     }, 300);
 }
-
-// 🎉 Confetti + emoji animation
-function createConfetti() {
-    const confettiContainer = document.getElementById('confetti');
-    const emojis = ["😂","🎭","🤣","😎","🤪","🎉"];
-    for(let i=0;i<30;i++){
-        const emoji = document.createElement('div');
-        emoji.innerText = emojis[Math.floor(Math.random()*emojis.length)];
-        emoji.style.position = 'absolute';
-        emoji.style.fontSize = Math.random()*24+14+'px';
-        emoji.style.left = Math.random()*window.innerWidth+'px';
-        emoji.style.top = '-50px';
-        emoji.style.opacity = 0.8;
-        emoji.style.transform = `rotate(${Math.random()*360}deg)`;
-        confettiContainer.appendChild(emoji);
-
-        // Animate falling
-        let top = -50;
-        const speed = Math.random()*3 + 2;
-        const fall = setInterval(()=>{
-            top += speed;
-            emoji.style.top = top+'px';
-            if(top>window.innerHeight){
-                emoji.remove();
-                clearInterval(fall);
-            }
-        },16);
-    }
-      }
