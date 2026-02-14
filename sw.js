@@ -1,21 +1,21 @@
-const cacheName = 'jokes-cache-v1';
-const filesToCache = [
+const CACHE_NAME = 'jokes-v2';
+const ASSETS = [
   '/',
   '/index.html',
   '/style.css',
   '/script.js',
-  '/manifest.json',
-  '/joker-background.png'
+  '/manifest.json'
+  // add icons if you have them: '/icon-192.png', '/icon-512.png'
 ];
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(cacheName).then((cache) => cache.addAll(filesToCache)));
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
+  );
 });
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
-});
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(caches.match(event.request).then((response) => response || fetch(event.request)));
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    caches.match(e.request).then(res => res || fetch(e.request))
+  );
 });
