@@ -1,26 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Jokes Generator 🎭</title>
+    <title>Joke Generator 🎭</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ff9800">
 </head>
 <body>
 <div class="container">
-    <h1 class="greeting">GREETINGS BY knarf 🎭</h1>
-    <h2>😂 Simple Joke Generator</h2>
 
-    <div id="joke-container">
-        <p id="joke">Click the button to get a joke!</p>
+    <!-- Category Selection Screen -->
+    <div id="category-screen" class="screen active">
+        <h1>Pick Your Humor</h1>
+        <div class="category-grid">
+            <button class="category-btn" onclick="startJokes('general')">
+                <span class="emoji">😂</span>
+                <span>General Jokes</span>
+            </button>
+            <button class="category-btn" onclick="startJokes('puns')">
+                <span class="emoji">🤪</span>
+                <span>Puns</span>
+            </button>
+            <button class="category-btn" onclick="startJokes('onelines')">
+                <span class="emoji">⚡</span>
+                <span>One-liners</span>
+            </button>
+            <button class="category-btn" onclick="startJokes('dad')">
+                <span class="emoji">👨‍👦</span>
+                <span>Dad Jokes</span>
+            </button>
+        </div>
     </div>
 
-    <button onclick="getJoke()">Get New Joke 🎉</button>
+    <!-- Joke Display Screen -->
+    <div id="joke-screen" class="screen">
+        <button class="back-btn" onclick="showCategories()">← Back</button>
+        <h1 id="category-title">Jokes</h1>
+        <div id="joke-container">
+            <p id="joke">Tap "New Joke" to start laughing</p>
+        </div>
+        <button onclick="getJoke()">New Joke 🎉</button>
+    </div>
+
 </div>
+
+<audio id="laughSound" preload="auto">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-cartoon-quick-satisfied-laugh-2149.mp3" type="audio/mpeg">
+    <!-- For better offline support later: download a short .mp3 and reference it here -->
+</audio>
 
 <script src="script.js"></script>
 </body>
-</html>
+        </html>
