@@ -1,8 +1,8 @@
 {
-  "name": "Simple Joke Generator",
+  "name": "Joke Generator",
   "short_name": "Jokes",
-  "description": "Fun daily jokes with categories, favorites, offline support, and random laughs!",
-  "start_url": "/index.html",
+  "description": "Random jokes, puns, one-liners, dad jokes + your personal favorites. Works offline!",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
