@@ -1,32 +1,28 @@
-// Your original simple caching + PWABuilder offline fallback combined
+const CACHE_NAME = 'jokes-cache-v3'; // changed version to force update
 
-const CACHE_NAME = 'jokes-cache-v1';
 const filesToCache = [
   '/',
   '/index.html',
   '/style.css',
   '/script.js',
   '/manifest.json',
-  // add icons if you have them: '/icon-192.png', '/icon-512.png'
-  '/offline.html'   // ← add your fallback page here too
+  '/offline.html'
+  // add icons if you have them in root:
+  // '/icon-192.png',
+  // '/icon-512.png'
 ];
 
-// ────────────────────────────────────────────────
-// Install: cache static assets + offline page
-// ────────────────────────────────────────────────
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
+      console.log('Caching app shell');
       return cache.addAll(filesToCache);
     })
   );
-  // Optional: skip waiting so new SW activates immediately
+  // Activate new service worker immediately
   self.skipWaiting();
 });
 
-// ────────────────────────────────────────────────
-// Activate: clean up old caches (optional but good)
-// ────────────────────────────────────────────────
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -36,15 +32,12 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
-  // Take control of the page immediately
+  // Take control of open pages
   self.clients.claim();
 });
 
-// ────────────────────────────────────────────────
-// Fetch: your original cache-first + navigation fallback
-// ────────────────────────────────────────────────
 self.addEventListener('fetch', (event) => {
-  // Handle navigation requests with offline fallback
+  // Special handling for navigation requests (page loads / reloads)
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request).catch(() => {
@@ -54,7 +47,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // For all other requests (css, js, api calls, images, etc.): cache-first
+  // Cache-first strategy for all other resources
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
