@@ -1,39 +1,114 @@
-/* ... previous styles remain ... add/replace these parts */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.actions {
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: #1e1e1e;
+    color: #fff;
+    transition: background 0.8s ease;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.greeting {
+    font-size: 2.2rem;
+    margin: 30px 0 10px;
+    color: #ff9800;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+.category-buttons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    width: 100%;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.like-btn {
-    background: transparent;
+button {
+    background: #ff9800;
+    color: white;
     border: none;
-    font-size: 2.8rem;
-    color: #ff5252;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    border-radius: 50px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.3s;
 }
 
-.like-btn.liked {
-    color: #ff1744;
-    transform: scale(1.2);
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255,152,0,0.4);
 }
 
-.like-btn:hover {
-    transform: scale(1.15);
+.back-btn {
+    background: #444;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-bottom: 20px;
 }
 
 #joke-container {
-    /* make it swipe-friendly */
-    touch-action: pan-y; /* allows vertical scroll if needed, but horizontal swipe ok */
-    user-select: none;
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 20px;
+    min-height: 160px;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    line-height: 1.5;
 }
 
-/* Optional: subtle swipe hint animation (fade in/out) */
-@keyframes swipe-hint {
-    0%, 100% { opacity: 0.3; transform: translateX(0); }
-    50% { opacity: 0.8; transform: translateX(20px); }
+#joke {
+    opacity: 0;
+    transition: opacity 0.6s ease;
 }
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+#loveBtn {
+    background: transparent;
+    border: none;
+    font-size: 2.6rem;
+    color: #ff5252;
+    cursor: pointer;
+    padding: 0 20px;
+}
+
+#loveBtn.liked {
+    color: #ff1744;
+    transform: scale(1.25);
+}
+
+#prevBtn, #nextBtn {
+    padding: 12px 24px;
+    font-size: 1.05rem;
+    }
