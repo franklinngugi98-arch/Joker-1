@@ -2,17 +2,24 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Simple Joke Generator</title>
+    <title>Jokes Generator 🎭</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="container">
+    <h1 class="greeting">GREETINGS BY knarf 🎭</h1>
+    <h2>😂 Simple Joke Generator</h2>
 
-<h1>GREETINGS BY knarf</h1>  <!-- Added greeting -->
-<h2>😂 Simple Joke Generator</h2>
+    <div id="joke-container">
+        <p id="joke">Click the button to get a joke!</p>
+    </div>
 
-<p id="joke">Click the button to get a joke!</p>
+    <button onclick="getJoke()">Get New Joke 🎉</button>
+</div>
 
-<button onclick="getJoke()">Get New Joke</button>
+<!-- Confetti / emojis animation -->
+<div id="confetti"></div>
 
 <script src="script.js"></script>
 </body>
