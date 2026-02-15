@@ -4,11 +4,105 @@ const categories = {
         api: "https://official-joke-api.appspot.com/random_joke",
         parse: data => `${data.setup} - ${data.punchline}`,
         offline: [
-            "Why did the chicken cross the road? - To get to the other side!",
-            "I told my computer I needed a break, and it froze.",
-            "Why don’t skeletons fight each other? - They don’t have the guts!",
+            "How do you stop a bull from charging? - Cancel its credit card!",
+            "What do you call a snobbish criminal going down the stairs? - A condescending con descending!",
+            "Why can't your nose be 12 inches long? - Because then it would be a foot!",
+            "What is the difference between a poorly-dressed man on a tricycle and a well-dressed man on a bicycle? - Attire!",
+            "What do you call an angry carrot? - A steamed veggie!",
+            "Why did the golfer bring two pairs of pants? - In case he got a hole-in-one!",
+            "What did the horse say after it tripped? - Help! I've fallen and I can't giddyup!",
+            "Why does Snoop Dogg use an umbrella? - For drizzle!",
+            "What do you call a priest that becomes a lawyer? - A father-in-law!",
+            "What do you call a man that irons clothes? - Iron Man!",
+            "How did the barber win the race? - He knew a shortcut!",
+            "RIP, boiling water. - You will be mist!",
+            "What do you call a pile of cats? - A meow-tain!",
+            "What kind of music do planets like? - Neptunes!",
+            "How did the hipster burn his tongue? - He drank his coffee before it was cool!",
+            "What do you call a row of rabbits hopping away? - A receding hare line!",
+            "Why don't they play poker in the jungle? - Too many cheetahs!",
+            "Where does the electric cord go to shopping? - The outlet mall, of course!",
+            "Why did the Clydesdale give the pony a glass of water? - Because he was a little horse!",
+            "What did the football coach say to the broken vending machine? - Give me my quarterback!",
+            "What kind of tea is hard to swallow? - Reality!",
+            "Why can't you trust the king of the jungle? - Because he's always lion!",
+            "Why did the stadium get hot after the game? - All of the fans left!",
+            "What kind of cheese isn't yours? - Nacho cheese!",
+            "I couldn't figure out why the baseball kept getting larger. - Then it hit me!",
+            "Why wouldn't the shrimp share his treasure? - He was a little shellfish!",
+            "Did you hear about the population of Ireland's capital? - It's Dublin!",
+            "What's a bear with no teeth called? - A gummy bear!",
+            "What kind of music do mummies listen to? - Wrap music!",
+            "How do you make a Venetian blind? - Poke him in the eyes!",
+            "What do you call it when Batman skips church? - Christian Bales!",
+            "What would bears be without bees? - Ears!",
+            "Did you hear about the sensitive burglar? - He takes things personally!",
+            "Why couldn't the pirate learn the alphabet? - Because he was always lost at C!",
+            "Why do seagulls fly over the sea? - Because otherwise they'd be called a bagel!",
+            "What do you call a sleeping bull? - A bulldozer!",
+            "What's brown and sticky? - A stick!",
+            "Why are elephants wrinkly? - Have you ever tried to iron one?",
+            "How do you make a Swiss roll? - Push him down a hill!",
+            "How do you impress a female baker? - Bring her flours!",
+            "What do Olympic sprinters eat before a race? - Nothing. They fast!",
+            "What did the yoga instructor say when her landlord tried to evict her? - Namaste!",
+            "How does a rancher keep track of his cattle? - With a cow-culator!",
+            "How many lips does a flower have? - Tu-lips!",
+            "Why are there gates around cemeteries? - Because people are dying to get in!",
+            "What's that restaurant on the moon like? - It's OK, but there is no atmosphere!",
+            "What's a pepper that won't leave you alone? - Jalapeño business!",
+            "Where was King David's temple located? - Beside his ear!",
+            "What job did the frog have at the hotel? - Bellhop!",
+            "What did the cake say to the fork? - Want a piece of me?!",
+            "What do you call a group of unorganized cats? - Cat-astrophe!",
+            "When does a duck wake up? - At the quack of dawn!",
+            "How do you make an egg roll? - You push it!",
+            "When is a door not a door? - When it's ajar!",
+            "Why did the baby strawberry cry? - Because his parents were in a jam!",
+            "Why do bees have sticky hair? - Because they use a honeycomb!",
+            "How do you make an octopus laugh? - With ten-tickles!",
+            "What's red and bad for your teeth? - A brick!",
+            "I ordered a chicken and an egg online. - I'll let you know what comes first!",
+            "Why can't you trust duck doctors? - Because they're all quacks!",
+            "Why don't eggs tell jokes? - Because crack up too easily!",
+            "What do sea monsters eat? - Fish and ships!",
+            "How do you make a tissue dance? - You put a little boogie in it!",
+            "What do lawyers wear to work? - Their lawsuits!",
+            "What did the bartender say to the ham sandwich who tried to order a glass of wine? - Sorry, we don't serve food here.",
+            "What did one tomato say to the other tomato during a race? - C'mon, ketchup!",
+            "What do you call an alligator detective? - An investi-gator!",
+            "What does a baby computer call his father? - Data!",
             "Why did the scarecrow win an award? - Because he was outstanding in his field!",
-            "I asked my dog what's two minus two. He said nothing."
+            "Why did the invisible man turn down the job offer? - Because he couldn't see himself doing it!",
+            "What has four wheels and flies? - A garbage truck!",
+            "Why did the robber jump in the shower? - Because he wanted a clean getaway!",
+            "What do you get from a pampered cow? - Spoiled milk!",
+            "How do you fix a cracked pumpkin? - With a pumpkin patch!",
+            "What did one hat say to the other? - You stay here, I'll go ahead!",
+            "Why did the restaurant hire a pig? - Because he was good at bacon!",
+            "Why did the student eat his homework? - Because the teacher told him it would be a piece of cake!",
+            "What lights up a soccer stadium? - A soccer match!",
+            "Time flies like an arrow. - Fruit flies like a banana!",
+            "How did the duck buy lipstick? - She just put it on her bill!",
+            "What has more lives than a cat? - A frog, because it croaks every day!",
+            "Why should you avoid products with velcro? - Because they're a total rip-off!",
+            "Why does Waldo only wear striped shirts? - Because he doesn't want to be spotted!",
+            "Why was the man hit by a bike every day? - Because he was stuck in a vicious cycle!",
+            "What did the termite say after walking into the bar? - Is the bar tender here?",
+            "What happens when frogs park illegally? - They get toad!",
+            "Why shouldn't you write with a broken pencil? - Because it's pointless!",
+            "What did one wall say to the other? - I'll meet you at the corner.",
+            "Why did the kid cross the playground? - To get to the other slide!",
+            "Why did the poor man stock up on yeast? - To make some dough!",
+            "How does the moon cut his hair? - Eclipse it!",
+            "What do you call a fake spaghetti? - An impasta!",
+            "What happens when you witness an Apple store get robbed? - You become an iWitness!",
+            "Why don't melons get married? - Because they cantaloupe!",
+            "What kind of tree can fit inside your hand? - A palm tree!",
+            "What do you call a sleeping dinosaur? - A dino-snore!",
+            "What do you call a sad cup of coffee? - A depresso!",
+            "How can you identify a dogwood tree? - By its bark!",
+            "How do you organize a space party? - You planet!"
         ]
     },
     puns: {
@@ -16,9 +110,105 @@ const categories = {
         api: "https://v2.jokeapi.dev/joke/Any?type=single",
         parse: data => data.joke,
         offline: [
-            "I told my wife she was drawing her eyebrows too high. She looked surprised.",
-            "I'm terrified of elevators... so I'm taking steps to avoid them.",
-            "Time flies like an arrow. Fruit flies like a banana."
+            "Why did Adele cross the road? To say hello from the other side.",
+            "What kind of concert only costs 45 cents? A 50 Cent concert featuring Nickelback.",
+            "What did the grape say when it got crushed? Nothing, it just let out a little wine.",
+            "I want to be cremated as it is my last hope for a smoking hot body.",
+            "Yesterday, I accidentally swallowed some food coloring. The doctor says I’m okay, but I feel like I’ve dyed a little inside.",
+            "To the guy who invented zero, thanks for nothing.",
+            "I had a crazy dream last night! I was swimming in an ocean of orange soda. Turns out it was just a Fanta sea.",
+            "A crazy wife says to her husband that moose are falling from the sky. The husband says, it’s reindeer.",
+            "Ladies, if he can’t appreciate your fruit jokes , you need to let that mango.",
+            "Geology rocks, but Geography is where it’s at!",
+            "What was Forrest Gump ’s email password? 1forrest1",
+            "Did you hear about the restaurant on the Moon ? I heard the food was good, but it had no atmosphere.",
+            "Can February March? No, but April May.",
+            "Need an ark to save two of every animal? I noah guy.",
+            "I don’t trust stairs because they’re always up to something.",
+            "Smaller babies may be delivered by stork, but the heavier ones need a crane.",
+            "My grandpa has the heart of a lion and a lifetime ban from the zoo.",
+            "Why was Dumbo sad? He felt irrelephant.",
+            "A man sued an airline company after it lost his luggage. Sadly, he lost his case.",
+            "I lost my mood ring, and I don’t know how to feel about it!",
+            "Time flies like an arrow. Fruit flies like a banana.",
+            "So what if I don’t know what apocalypse means? It’s not the end of the world!",
+            "My friend drove his expensive car into a tree and found out how his Mercedes bends.",
+            "Becoming a vegetarian is one big missed steak .",
+            "I can’t believe I got fired from the calendar factory. All I did was take a day off!",
+            "Some aquatic mammals at the zoo escaped. It was otter chaos!",
+            "Never trust an atom; they make up everything!",
+            "Waking up this morning was an eye-opening experience.",
+            "Long fairy tales have a tendency to dragon .",
+            "What do you use to cut a Roman Emperor’s hair? Ceasers.",
+            "The Middle Ages were called the Dark Ages because there were too many knights.",
+            "My sister bet that I couldn’t build a car out of spaghetti. You should’ve seen her face when I drove pasta.",
+            "I made a pun about the wind, but it blows.",
+            "Somebody stole all my lamps. I couldn’t be more de-lighted!",
+            "I knew a guy who collected candy canes; they were all in mint condition.",
+            "My wife tried to apply at the post office but they wouldn’t letter. They said only mails work here.",
+            "My friend’s bakery burned down last night. Now, his business is toast.",
+            "Getting the ability to fly would be so uplifting.",
+            "It’s hard to explain puns to kleptomaniacs because they always take things literally.",
+            "Two windmills are standing in a wind farm. One asks, “What’s your favorite kind of music ?” The other says, “I’m a big metal fan.”",
+            "I was wondering why the ball was getting bigger. Then it hit me.",
+            "England doesn’t have a kidney bank, but it does have a Liverpool.",
+            "What do you call the wife of a hippie? A Mississippi.",
+            "A cross-eyed teacher couldn’t control his pupils.",
+            "I bought a boat because it was for sail.",
+            "I wasn’t originally going to get a brain transplant, but then I changed my mind.",
+            "There was a kidnapping at school yesterday. Don’t worry, though—he woke up!",
+            "What do you get when you mix alcohol and literature? Tequila mockingbird.",
+            "What washes up on tiny beaches? Microwaves.",
+            "I hate how funerals are always at 9 a.m. I’m not really a mourning person.",
+            "What’s the difference between a poorly dressed man on a bicycle and a nicely dressed man on a tricycle? A tire.",
+            "The guy who invented the door knocker got a no-bell prize.",
+            "German sausage jokes are just the wurst.",
+            "What do you call an alligator in a vest? An investigator.",
+            "What do you call the ghost of a chicken? A poultry-geist.",
+            "How does Moses make coffee ? Hebrews it.",
+            "The machine at the coin factory just suddenly stopped working, with no explanation. It doesn’t make any cents.",
+            "Sure, I drink brake fluid. But I can stop anytime!",
+            "What do you call a man with no arms and no legs stuffed in your mailbox? Bill.",
+            "Never discuss infinity with a mathematician; they can go on about it forever.",
+            "She had a photographic memory, but never developed it.",
+            "I’m reading a book about anti-gravity. It’s impossible to put down!",
+            "How did the picture end up in jail? It was framed!",
+            "My ex-wife still misses me. But her aim is starting to improve!",
+            "You really shouldn’t be intimidated by advanced math…it’s easy as pi!",
+            "Why was the cookie sad? Because his mom was a wafer long!",
+            "What’s the difference between a hippo and a zippo? One is really heavy, and the other is a little lighter!",
+            "What did the sushi say to the bee? Wasabee!",
+            "Why was the baby ant confused? Because all his uncles were ants!",
+            "I just found out that I’m color blind. The news came completely out of the green!",
+            "Why didn’t the cat go to the vet? He was feline fine!",
+            "Who is the penguin’s favorite Aunt? Aunt-Arctica!",
+            "What should a lawyer always wear to a court? A good lawsuit!",
+            "The quickest way to make antifreeze? Just steal her blanket!",
+            "How do you make a good egg roll? You push it down a hill!",
+            "Apple is designing a new automatic car. But they’re having trouble installing Windows!",
+            "I’ve started sleeping in our fireplace. Now I sleep like a log!",
+            "That baseball player was such a bad sport. He stole third base and then just went home!",
+            "Did you hear about the guy who got hit in the head with a can of soda? He was lucky it was a soft drink!",
+            "The past, the present and the future walk into a bar. It was tense!",
+            "Coffee has a rough time in our house. It gets mugged every single morning!",
+            "What did the hamburger name its baby? Patty!",
+            "One lung said to another, “we be-lung together!”",
+            "I asked a Frenchman if he played video games. He said Wii.",
+            "What does a clock do when it’s hungry? It goes back for seconds.",
+            "What did the duck say when she purchased new lipstick? Put it on my bill!",
+            "My parents said I can’t drink coffee anymore. Or else they’ll ground me!",
+            "What did syrup say to the waffle? I love you a waffle lot!",
+            "My wife refuses to go to a nude beach with me. I think she’s just being clothes-minded!",
+            "Did you hear about that cheese factory that exploded in France? There was nothing left but de Brie!",
+            "I’m no cheetah, you’re lion!",
+            "What did the ranch say when somebody opened the refrigerator? “Hey, close the door! I’m dressing!”",
+            "I wanted to take pictures of the fog this morning but I mist my chance. I guess I could dew it tomorrow!",
+            "My dad unfortunately passed away when we couldn’t remember his blood type. His last words to us were, “Be positive!”",
+            "What do you call a girl with one leg that’s shorter than the other? Ilene.",
+            "Towels can’t tell jokes. They have a dry sense of humor.",
+            "What did the buffalo say to his son ? Bison.",
+            "Why should you never trust a train? They have loco motives.",
+            "A cabbage and celery walk into a bar and the cabbage gets served first because he was a head."
         ]
     },
     onelines: {
@@ -26,155 +216,38 @@ const categories = {
         api: "https://v2.jokeapi.dev/joke/Any?type=single",
         parse: data => data.joke,
         offline: [
-            "I only know 25 letters of the alphabet. I don't know y.",
-            "Parallel lines have so much in common. It's a shame they'll never meet.",
-            "My friend says I'm addicted to brake fluid, but I can stop anytime."
-        ]
-    },
-    dad: {
-        name: "Dad Jokes",
-        api: "https://icanhazdadjoke.com/",
-        headers: { "Accept": "application/json" },
-        parse: data => data.joke,
-        offline: [
-            "I'm reading a book on anti-gravity. It's impossible to put down!",
-            "Why don't eggs tell jokes? They'd crack each other up.",
-            "I used to play piano by ear, but now I use my hands."
-        ]
-    },
-    favorites: {
-        name: "My Favorites ❤️",
-        isFavorites: true
-    }
-};
-
-let currentCategory = null;
-let currentJokeText = "";
-let jokeHistory = [];
-let historyIndex = -1;
-let favorites = JSON.parse(localStorage.getItem("favoriteJokes") || "[]");
-
-function showCategories() {
-    document.getElementById("category-screen").classList.add("active");
-    document.getElementById("joke-screen").classList.remove("active");
-}
-
-function startCategory(key) {
-    currentCategory = categories[key];
-    document.getElementById("category-title").innerText = currentCategory.name;
-
-    jokeHistory = [];
-    historyIndex = -1;
-    currentJokeText = "";
-
-    document.getElementById("loveBtn").classList.remove("liked");
-    document.getElementById("loveBtn").innerText = "♡";
-
-    if (currentCategory.isFavorites) {
-        if (favorites.length === 0) {
-            document.getElementById("joke").innerText = "No favorite jokes yet 💔";
-        } else {
-            jokeHistory = [...favorites];
-            historyIndex = 0;
-            showCurrentJoke();
-        }
-    } else {
-        getJoke();
-    }
-
-    document.getElementById("category-screen").classList.remove("active");
-    document.getElementById("joke-screen").classList.add("active");
-}
-
-async function getJoke() {
-    if (currentCategory.isFavorites) return;
-
-    const jokeEl = document.getElementById("joke");
-    jokeEl.style.opacity = 0;
-
-    document.getElementById("laughSound").play().catch(() => {});
-
-    const colors = ["#2c3e50","#8e44ad","#2980b9","#27ae60","#e67e22","#c0392b","#34495e","#d35400"];
-    document.body.style.background = colors[Math.floor(Math.random() * colors.length)];
-
-    setTimeout(async () => {
-        let text = "Couldn't load a joke... try again!";
-
-        try {
-            const options = currentCategory.headers ? { headers: currentCategory.headers } : {};
-            const response = await fetch(currentCategory.api, options);
-            if (!response.ok) throw new Error();
-            const data = await response.json();
-            text = currentCategory.parse(data);
-        } catch {
-            const arr = currentCategory.offline;
-            text = arr[Math.floor(Math.random() * arr.length)];
-        }
-
-        currentJokeText = text;
-        jokeHistory = jokeHistory.slice(0, historyIndex + 1);
-        jokeHistory.push(text);
-        historyIndex = jokeHistory.length - 1;
-
-        updateLoveButton();
-        jokeEl.innerText = text;
-        jokeEl.style.opacity = 1;
-    }, 400);
-}
-
-function showCurrentJoke() {
-    if (historyIndex < 0 || historyIndex >= jokeHistory.length) return;
-
-    currentJokeText = jokeHistory[historyIndex];
-    document.getElementById("joke").innerText = currentJokeText;
-    document.getElementById("joke").style.opacity = 1;
-    updateLoveButton();
-}
-
-function updateLoveButton() {
-    const btn = document.getElementById("loveBtn");
-    const isFavorite = favorites.includes(currentJokeText);
-    btn.innerText = isFavorite ? "❤️" : "♡";
-    btn.classList.toggle("liked", isFavorite);
-}
-
-function toggleFavorite() {
-    if (!currentJokeText) return;
-
-    const index = favorites.indexOf(currentJokeText);
-    if (index === -1) {
-        favorites.push(currentJokeText);
-    } else {
-        favorites.splice(index, 1);
-    }
-
-    localStorage.setItem("favoriteJokes", JSON.stringify(favorites));
-    updateLoveButton();
-
-    if (currentCategory.isFavorites && index !== -1) {
-        jokeHistory = [...favorites];
-        if (jokeHistory.length === 0) {
-            document.getElementById("joke").innerText = "No favorite jokes left 💔";
-            historyIndex = -1;
-        } else {
-            historyIndex = Math.min(historyIndex, jokeHistory.length - 1);
-            showCurrentJoke();
-        }
-    }
-}
-
-function prevJoke() {
-    if (historyIndex <= 0) return;
-    historyIndex--;
-    showCurrentJoke();
-}
-
-function nextJoke() {
-    if (currentCategory.isFavorites) {
-        if (historyIndex >= jokeHistory.length - 1) return;
-        historyIndex++;
-        showCurrentJoke();
-    } else {
-        getJoke();
-    }
-                }
+            "Did you hear they arrested the devil? Yeah, they got him on possession.",
+            "What did one DNA say to the other DNA? “Do these genes make me look fat?”",
+            "My IQ test results came back. They were negative.",
+            "What do you get when you cross a polar bear with a seal? A polar bear.",
+            "Why can’t you trust an atom? Because they make up literally everything.",
+            "Why was six afraid of seven? Because seven eight nine.",
+            "What do you call a hippie’s wife? Mississippi.",
+            "What’s the difference between an outlaw and an in-law? Outlaws are wanted.",
+            "Scientists have recently discovered a food that greatly reduces sex drive. It’s called wedding cake.",
+            "Before you marry a person, you should first make them use a computer with a slow Internet connection to see who they really are.",
+            "I never knew what happiness was until I got married—and then it was too late.",
+            "Some men say they don’t wear their wedding band because it cuts off circulation. Well, that’s the point, isn’t it?",
+            "Advice to husbands: Try praising your wife now and then, even if it does startle her at first.",
+            "Did you hear about the shepherd who drove his sheep through town? He was given a ticket for making a ewe turn.",
+            "What happens to an illegally parked frog? It gets toad away.",
+            "How does the man in the moon get his hair cut? Eclipse it.",
+            "What do you call a blonde with half a brain? Gifted.",
+            "Why are so many blonde jokes one-liners? So brunettes can remember them.",
+            "Our child has a great deal of willpower—and even more won’t power.",
+            "Among the things that are so simple even a child can operate them are parents.",
+            "Why aren’t dogs good dancers? Because they have two left feet.",
+            "What’s a dog’s favorite homework assignment? A lab report.",
+            "Why did Beethoven get rid of his chickens? All they said was, “Bach, Bach, Bach …”",
+            "Of course I wouldn’t say anything about her unless I could say something good. And, oh boy, is this good …",
+            "When he talks, it isn’t a conversation. It’s a filibuster.",
+            "She leaves me with the feeling that when we bury the hatchet she’ll mark the exact spot.",
+            "You can’t believe everything you hear—but you can repeat it.",
+            "There’s a lot to be said in his favor, but it’s not nearly as interesting.",
+            "They’ve been treating me like one of the family, and I’ve put up with it for as long as I can.",
+            "Why did the parents not like their son’s biology teacher? He had skeletons in his closet.",
+            "Their first daughter was born with a silver spoon in her mouth. Now they’re hoping for triplets so they can have a whole set.",
+            "I spent a lot of time, money and effort childproofing my house … but the kids still get in.",
+            "Small son sitting on Daddy’s lap: “I’m still confused. Was I born in a nest or a hive?”",
+            "A Freudian slip is when you say one thing but mean your mother.",
+   
