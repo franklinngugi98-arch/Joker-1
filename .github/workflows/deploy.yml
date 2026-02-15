@@ -1,0 +1,56 @@
+name: Deploy Minified Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # change if your default branch is different
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install -g terser clean-css-cli html-minifier-terser
+
+      - name: Prepare dist folder
+        run: |
+          rm -rf dist
+          mkdir dist
+
+          # Minify JS
+          for file in src/*.js; do
+            filename=$(basename $file)
+            terser "$file" -c -m -o "dist/$filename"
+          done
+
+          # Minify CSS
+          for file in src/*.css; do
+            filename=$(basename $file)
+            cleancss -o "dist/$filename" "$file"
+          done
+
+          # Minify HTML
+          for file in src/*.html; do
+            filename=$(basename $file)
+            html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --minify-css true --minify-js true "$file" -o "dist/$filename"
+          done
+
+      - name: Copy other assets
+        run: |
+          cp -r src/assets dist/ || echo "No assets folder"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
