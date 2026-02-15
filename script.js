@@ -323,8 +323,30 @@ function nextJoke() {
 favBtn.addEventListener("click", () => {
   favBtn.classList.add("favorite-active");
 
+    
+
   setTimeout(() => {
     favBtn.classList.remove("favorite-active");
   }, 400);
 });
             }
+
+let startX = 0;
+
+const jokeBox = document.getElementById("joke-container");
+
+jokeBox.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+jokeBox.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) {
+    document.getElementById("next-btn").click();
+  }
+
+  if (endX - startX > 50) {
+    document.getElementById("prev-btn").click();
+  }
+});
