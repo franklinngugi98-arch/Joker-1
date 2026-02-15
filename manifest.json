@@ -1,25 +1,32 @@
 {
   "name": "Joke Generator",
   "short_name": "Jokes",
-  "description": "Random jokes, puns, one-liners, dad jokes + your personal favorites. Works offline!",
-  "start_url": "/",
+  "description": "Random jokes, puns, one‑liners, dad jokes + your personal favorites. Works offline!",
+  "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "orientation": "portrait‑primary",
   "background_color": "#1e1e1e",
   "theme_color": "#ff9800",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/icon‑192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "/icon‑512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot1.png",
+      "sizes": "540x720",
+      "type": "image/png"
     }
   ]
 }
