@@ -311,8 +311,20 @@ function nextJoke() {
     if (currentCategory.isFavorites) {
         if (historyIndex >= jokeHistory.length - 1) return;
         historyIndex++;
+
+
         showCurrentJoke();
     } else {
         getJoke();
     }
+
+    const favBtn = document.getElementById("favorite-btn");
+
+favBtn.addEventListener("click", () => {
+  favBtn.classList.add("favorite-active");
+
+  setTimeout(() => {
+    favBtn.classList.remove("favorite-active");
+  }, 400);
+});
             }
