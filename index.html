@@ -1,70 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Jokes Generator</title>
-
-    <!-- PWA essentials -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#ff9800">
-    <meta name="description" content="Random jokes, puns, one-liners, dad jokes and your personal favorites. Works offline!">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- Fonts & styles -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joke Generator</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="container">
 
-    <!-- Category Selection Screen -->
-    <div id="category-screen" class="screen active">
-        <h2>Choose your humor style</h2>
-        <div class="category-buttons">
-            <button onclick="startCategory('general')">General Jokes 😂</button>
-            <button onclick="startCategory('puns')">Puns 🤪</button>
-            <button onclick="startCategory('onelines')">One-liners ⚡</button>
-            <button onclick="startCategory('dad')">Dad Jokes 👨‍👦</button>
-            <button onclick="startCategory('favorites')">My Favorites ❤️</button>
-        </div>
-    </div>
+<div class="app-container">
 
-    <!-- Joke Screen -->
-    <div id="joke-screen" class="screen">
-        <button class="back-btn" onclick="showCategories()">← Back to categories</button>
-        <h2 id="category-title">Jokes</h2>
+<header class="top-bar">
+<button id="back-categories">← Categories</button>
+</header>
 
-        <div id="joke-container">
-            <p id="joke">Tap to get a joke!</p>
-        </div>
+<div id="joke-container">
+<p id="chat">Loading joke...</p>
+<button id="share-btn">🔗</button>
+</div>
 
-        <div class="controls">
-            <button id="prevBtn" onclick="prevJoke()">← Previous</button>
-            <button id="loveBtn" onclick="toggleFavorite()">♡</button>
-            <button id="shareBtn" onclick="shareJoke()">Share 🔗</button>
-            <button id="nextBtn" onclick="nextJoke()">Next →</button>
-        </div>
-    </div>
+<div class="nav-buttons">
+<button id="prev-btn">◀</button>
+<button id="next-btn">▶</button>
+</div>
+
+<button id="favorite-btn">❤</button>
 
 </div>
 
-<audio id="laughSound" preload="auto">
-    <source src="https://assets.mixkit.co/sfx/preview/mixkit-cartoon-quick-satisfied-laugh-2149.mp3" type="audio/mpeg">
-</audio>
-
 <script src="script.js"></script>
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('Service Worker registered'))
-                .catch(err => console.log('Service Worker registration failed:', err));
-        });
-    }
-</script>
+
 </body>
 </html>
