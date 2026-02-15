@@ -1,4 +1,3 @@
-
 const categories = {
     general: {
         name: "General Jokes",
@@ -316,5 +315,4 @@ function nextJoke() {
     } else {
         getJoke();
     }
-}
-```
+            }
