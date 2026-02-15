@@ -84,7 +84,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
     margin-top: 40px;
 }
 
@@ -94,12 +94,21 @@ button:hover {
     font-size: 3rem;
     color: #ff5252;
     cursor: pointer;
-    padding: 0 30px;
+    padding: 0 20px;
 }
 
 #loveBtn.liked {
     color: #ff1744;
     transform: scale(1.3);
+}
+
+#shareBtn {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0 20px;
 }
 
 #prevBtn, #nextBtn {
