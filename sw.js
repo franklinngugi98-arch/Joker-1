@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jokes-cache-v3'; // changed version to force update
+const CACHE_NAME = 'jokes-cache-v4'; // updated version
 
 const filesToCache = [
   '/',
@@ -6,10 +6,9 @@ const filesToCache = [
   '/style.css',
   '/script.js',
   '/manifest.json',
-  '/offline.html'
-  // add icons if you have them in root:
-  // '/icon-192.png',
-  // '/icon-512.png'
+  '/offline.html',
+  '/icon-192.png',
+  '/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -41,7 +40,7 @@ self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request).catch(() => {
-        return caches.match('/offline.html');
+        return caches.match('/index.html'); // Serve main app offline
       })
     );
     return;
