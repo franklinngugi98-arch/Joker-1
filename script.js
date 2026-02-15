@@ -1,23 +1,75 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+/* -------------------- CATEGORY DATA -------------------- */
+
+const categories = {
+    general: {
+        name: "General Jokes",
+        api: "https://official-joke-api.appspot.com/random_joke",
+        parse: data => `${data.setup} - ${data.punchline}`,
+        offline: [
+            "How do you stop a bull from charging? - Cancel its credit card!",
+            "Why can't your nose be 12 inches long? - Because then it would be a foot!",
+            "What do you call a pile of cats? - A meow-tain!"
+        ]
+    },
+
+    puns: {
+        name: "Puns",
+        api: "https://v2.jokeapi.dev/joke/Any?type=single",
+        parse: data => data.joke,
+        offline: [
+            "To the guy who invented zero, thanks for nothing.",
+            "I don’t trust stairs because they’re always up to something."
+        ]
+    },
+
+    onelines: {
+        name: "One-liners",
+        api: "https://v2.jokeapi.dev/joke/Any?type=single",
+        parse: data => data.joke,
+        offline: [
+            "My IQ test results came back. They were negative.",
+            "Why was six afraid of seven? Because seven eight nine."
+        ]
+    },
+
+    dad: {
+        name: "Dad Jokes",
+        api: "https://icanhazdadjoke.com/",
+        headers: { "Accept": "application/json" },
+        parse: data => data.joke,
+        offline: [
+            "Why don't skeletons fight each other? They don't have the guts.",
+            "How do you make a tissue dance? Put a little boogie in it!"
+        ]
+    },
+
+    favorites: {
+        name: "My Favorites ❤️",
+        isFavorites: true
+    }
+};
+
+
+/* -------------------- STATE -------------------- */
+
 let currentCategory = null;
 let currentJokeText = "";
 let jokeHistory = [];
 let historyIndex = -1;
 let favorites = JSON.parse(localStorage.getItem("favoriteJokes") || "[]");
 
-const jokeEl = document.getElementById("joke");
-const loveBtn = document.getElementById("loveBtn");
-const jokeBox = document.getElementById("joke-container");
 
-let startX = 0;
+/* -------------------- SCREEN CONTROL -------------------- */
 
-/* ================= CATEGORY NAV ================= */
-
-function showCategories() {
+window.showCategories = function () {
     document.getElementById("category-screen").classList.add("active");
     document.getElementById("joke-screen").classList.remove("active");
-}
+};
 
-function startCategory(key) {
+window.startCategory = function (key) {
+
     currentCategory = categories[key];
     document.getElementById("category-title").innerText = currentCategory.name;
 
@@ -25,13 +77,10 @@ function startCategory(key) {
     historyIndex = -1;
     currentJokeText = "";
 
-    updateLoveButton();
-
+    const jokeEl = document.getElementById("joke");
     jokeEl.innerText = "Loading joke...";
-    jokeEl.style.opacity = 1;
 
     if (currentCategory.isFavorites) {
-
         if (favorites.length === 0) {
             jokeEl.innerText = "No favorite jokes yet 💔";
         } else {
@@ -39,27 +88,24 @@ function startCategory(key) {
             historyIndex = 0;
             showCurrentJoke();
         }
-
     } else {
         getJoke();
     }
 
     document.getElementById("category-screen").classList.remove("active");
     document.getElementById("joke-screen").classList.add("active");
-}
+};
 
-/* ================= GET JOKE ================= */
+
+/* -------------------- GET JOKE -------------------- */
 
 async function getJoke() {
 
     if (currentCategory.isFavorites) return;
 
+    const jokeEl = document.getElementById("joke");
+
     jokeEl.style.opacity = 0;
-
-    document.getElementById("laughSound").play().catch(() => {});
-
-    const colors = ["#2c3e50","#8e44ad","#2980b9","#27ae60","#e67e22","#c0392b","#34495e","#d35400"];
-    document.body.style.background = colors[Math.floor(Math.random()*colors.length)];
 
     setTimeout(async () => {
 
@@ -67,7 +113,10 @@ async function getJoke() {
 
         try {
 
-            const options = currentCategory.headers ? { headers: currentCategory.headers } : {};
+            const options = currentCategory.headers
+                ? { headers: currentCategory.headers }
+                : {};
+
             const res = await fetch(currentCategory.api, options);
             const data = await res.json();
 
@@ -76,8 +125,7 @@ async function getJoke() {
         } catch {
 
             const arr = currentCategory.offline;
-            text = arr[Math.floor(Math.random()*arr.length)];
-
+            text = arr[Math.floor(Math.random() * arr.length)];
         }
 
         currentJokeText = text;
@@ -91,110 +139,124 @@ async function getJoke() {
         jokeEl.innerText = text;
         jokeEl.style.opacity = 1;
 
-    }, 400);
+    }, 300);
 }
 
-/* ================= HISTORY ================= */
+
+/* -------------------- HISTORY -------------------- */
 
 function showCurrentJoke() {
 
     if (historyIndex < 0 || historyIndex >= jokeHistory.length) return;
 
     currentJokeText = jokeHistory[historyIndex];
-    jokeEl.innerText = currentJokeText;
-    jokeEl.style.opacity = 1;
+    document.getElementById("joke").innerText = currentJokeText;
 
     updateLoveButton();
 }
 
-function prevJoke() {
-
+window.prevJoke = function () {
     if (historyIndex <= 0) return;
-
     historyIndex--;
     showCurrentJoke();
-}
+};
 
-function nextJoke() {
+window.nextJoke = function () {
 
     if (currentCategory.isFavorites) {
 
         if (historyIndex >= jokeHistory.length - 1) return;
-
         historyIndex++;
         showCurrentJoke();
 
     } else {
         getJoke();
     }
-}
+};
 
-/* ================= FAVORITES ================= */
 
-function updateLoveButton() {
+/* -------------------- FAVORITES -------------------- */
 
-    const liked = favorites.includes(currentJokeText);
-
-    loveBtn.innerText = liked ? "❤️" : "♡";
-    loveBtn.classList.toggle("liked", liked);
-}
-
-function toggleFavorite() {
+window.toggleFavorite = function () {
 
     if (!currentJokeText) return;
 
     const index = favorites.indexOf(currentJokeText);
 
-    if (index === -1) {
-        favorites.push(currentJokeText);
-    } else {
-        favorites.splice(index, 1);
-    }
+    if (index === -1) favorites.push(currentJokeText);
+    else favorites.splice(index, 1);
 
     localStorage.setItem("favoriteJokes", JSON.stringify(favorites));
-
-    loveBtn.classList.add("favorite-active");
-
-    setTimeout(() => {
-        loveBtn.classList.remove("favorite-active");
-    }, 400);
-
     updateLoveButton();
+};
+
+function updateLoveButton() {
+
+    const btn = document.getElementById("loveBtn");
+    if (!btn) return;
+
+    const isFav = favorites.includes(currentJokeText);
+
+    btn.innerText = isFav ? "❤️" : "♡";
 }
 
-/* ================= SHARE ================= */
 
-async function shareJoke() {
+/* -------------------- SHARE -------------------- */
+
+window.shareJoke = async function () {
 
     if (!currentJokeText) return;
 
     if (navigator.share) {
 
-        try {
-            await navigator.share({
-                title: "Funny Joke",
-                text: currentJokeText
-            });
-        } catch {}
+        await navigator.share({
+            title: "Funny Joke",
+            text: currentJokeText
+        });
 
     } else {
 
         navigator.clipboard.writeText(currentJokeText);
-        alert("Joke copied!");
-
+        alert("Copied!");
     }
+};
+
+
+/* -------------------- SWIPE SUPPORT -------------------- */
+
+let startX = 0;
+const jokeBox = document.getElementById("joke-container");
+
+if (jokeBox) {
+
+    jokeBox.addEventListener("touchstart", e => {
+        startX = e.touches[0].clientX;
+    });
+
+    jokeBox.addEventListener("touchend", e => {
+
+        let endX = e.changedTouches[0].clientX;
+
+        if (startX - endX > 50) nextJoke();
+        if (endX - startX > 50) prevJoke();
+    });
 }
 
-/* ================= SWIPE SUPPORT ================= */
 
-jokeBox.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-});
+/* -------------------- FAVORITE BUTTON ANIMATION -------------------- */
 
-jokeBox.addEventListener("touchend", e => {
+const favBtn = document.getElementById("favorite-btn");
 
-    let endX = e.changedTouches[0].clientX;
+if (favBtn) {
 
-    if (startX - endX > 50) nextJoke();
-    if (endX - startX > 50) prevJoke();
+    favBtn.addEventListener("click", () => {
+
+        favBtn.classList.add("favorite-active");
+
+        setTimeout(() => {
+            favBtn.classList.remove("favorite-active");
+        }, 400);
+    });
+}
+
 });
