@@ -1,28 +1,28 @@
-const CACHE_NAME = 'jokes-cache-v5';  // ← Bump version so old cache is cleaned
+const CACHE_NAME = 'jokes-cache-v6';  // Bump version to force update and clean old caches
 
 const filesToCache = [
-  '/',                    // Important: root navigation
-  '/index.html',
+  '/',                     // Root navigation → serves index.html
+  '/index.html',           // Explicit app shell
   '/style.css',
   '/script.js',
   '/manifest.json',
-  '/offline.html',
-  // Add your current icons here (adjust names if different)
+  '/offline.html',         // Custom offline fallback page
+  // Your current icons (adjust if you renamed/deleted some)
   '/1024.png',
   '/144.png',
   '/120.png',
   '/100.png'
-  // Add any other static files if you have them
+  // Add any other static files here if you add more later
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Caching app shell + offline page');
+      console.log('Caching app shell and offline fallback');
       return cache.addAll(filesToCache);
     })
   );
-  // Skip waiting → new SW activates immediately
+  // Activate new SW immediately (aggressive update)
   self.skipWaiting();
 });
 
@@ -35,20 +35,23 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
-  // Take control of all open pages right away
+  // Immediately control all open clients/pages
   self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  // Strategy: For page loads (navigation) → cache-first, fallback to offline.html if shell missing
+  // Aggressive offline: For navigation (page loads, reloads, home screen opens)
   if (event.request.mode === 'navigate') {
     event.respondWith(
+      // 1. Try cache first (fast & offline-proof) → most aggressive path
       caches.match(event.request).then((cachedResponse) => {
         if (cachedResponse) {
-          return cachedResponse;  // Serve cached index.html if available
+          return cachedResponse;  // Serve cached index.html instantly
         }
-        // If no cache (very first offline attempt) → try network, fallback to offline page
+
+        // 2. Cache miss (rare after first install) → try network
         return fetch(event.request).catch(() => {
+          // Network failed → serve your nice offline.html as ultimate fallback
           return caches.match('/offline.html');
         });
       })
@@ -56,12 +59,12 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // For all other requests (css, js, images, etc.) → cache-first, fallback to network
+  // For all other requests (CSS, JS, images, API calls, etc.) → cache-first
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request).catch(() => {
-        // Optional: could return a fallback image or JSON here, but usually not needed
-        return new Response('Offline resource not available', { status: 503 });
+        // Optional: could return a placeholder, but usually browser handles
+        return new Response('Resource unavailable offline', { status: 503 });
       });
     })
   );
