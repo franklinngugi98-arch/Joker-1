@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Franknktyrn Jokes</title>
 
+    <!-- PWA essentials -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#7b2cbf">
     <meta name="description" content="Random jokes, puns, one-liners, dad jokes and your personal favorites. Works offline!">
@@ -12,6 +13,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
@@ -19,7 +21,7 @@
 </head>
 <body>
 
-<!-- Full-screen splash screen with your logo -->
+<!-- Full-screen custom splash with logo -->
 <div id="splash-screen">
   <img src="/logo.png" alt="Franknktyrn Logo">
 </div>
@@ -57,7 +59,7 @@
 
 </div>
 
-<!-- Settings button -->
+<!-- Settings button (hidden until joke screen) -->
 <button id="settingsBtn" class="settings-btn" onclick="openSettings()" title="Settings" style="display:none;">⚙️</button>
 
 <!-- Settings Modal -->
@@ -97,6 +99,7 @@
 <script src="script.js"></script>
 
 <script>
+    // Service Worker registration
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
@@ -105,16 +108,18 @@
         });
     }
 
-    // Splash screen hide
+    // Splash fade-out
     window.addEventListener('load', () => {
         setTimeout(() => {
             const splash = document.getElementById('splash-screen');
-            splash.style.opacity = '0';
-            setTimeout(() => {
-                splash.style.display = 'none';
-                document.querySelector('.container').style.display = 'block';
-            }, 600);
-        }, 1800);
+            if (splash) {
+                splash.style.opacity = '0';
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                    document.querySelector('.container').style.display = 'block';
+                }, 600); // match fade duration
+            }
+        }, 1800); // show for ~2 seconds
     });
 </script>
 </body>
