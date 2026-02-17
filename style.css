@@ -55,14 +55,24 @@ button:hover {
     box-shadow: 0 8px 20px rgba(255,152,0,0.5);
 }
 
+/* Back button – moved to left side + better color */
 .back-btn {
-    background: #444;
+    background: #ff5722;           /* stronger orange/red tone */
     padding: 10px 20px;
     font-size: 1rem;
     margin-bottom: 30px;
+    float: left;                   /* aligns left */
+    border-radius: 30px;
+    min-width: 140px;
+    text-align: center;
 }
 
-/* Joke container - now relative so share button can be absolutely positioned inside */
+.back-btn:hover {
+    background: #e64a19;
+    transform: translateY(-2px);
+}
+
+/* Joke container with relative positioning for share icon */
 #joke-container {
     position: relative;
     background: rgba(255,255,255,0.08);
@@ -77,7 +87,7 @@ button:hover {
     line-height: 1.5;
 }
 
-/* Share button - small icon in bottom-right corner of joke container */
+/* Share icon – bottom right inside joke box */
 #shareBtn {
     position: absolute;
     bottom: 16px;
@@ -98,12 +108,12 @@ button:hover {
     transform: scale(1.15);
 }
 
-/* Controls bar - tighter spacing so prev/next are closer to center */
+/* Controls bar */
 .controls {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;          /* reduced from 20px */
+    gap: 16px;
     margin-top: 32px;
 }
 
@@ -122,18 +132,150 @@ button:hover {
 }
 
 #prevBtn, #nextBtn {
-    padding: 12px 24px;     /* slightly smaller than before */
+    padding: 12px 24px;
     font-size: 1rem;
-    min-width: 110px;       /* prevents them from shrinking too much */
+    min-width: 110px;
 }
 
-/* Fade animation for joke text */
+/* Joke text fade */
 #joke {
     opacity: 0;
     transition: opacity 0.7s ease;
 }
 
-/* Responsive adjustments for smaller screens */
+/* ─────────────────────────────────────── */
+/*          SETTINGS BUTTON & MODAL          */
+/* ─────────────────────────────────────── */
+
+.settings-btn {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: rgba(255,152,0,0.25);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0.85;
+    transition: all 0.25s ease;
+}
+
+.settings-btn:hover,
+.settings-btn:focus {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 12px rgba(255,152,0,0.5);
+}
+
+/* Modal overlay */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.modal.active {
+    display: flex;
+}
+
+/* Modal box */
+.modal-content {
+    background: #222;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 380px;
+    padding: 24px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 2.4rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #ff9800;
+}
+
+/* Setting rows */
+.setting-item {
+    margin-bottom: 24px;
+}
+
+.setting-item label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.setting-item select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #333;
+    color: white;
+    font-size: 1rem;
+    appearance: none;
+}
+
+/* Save button */
+.save-btn {
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 50px;
+    width: 100%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.save-btn:hover {
+    background: #fb8c00;
+    transform: translateY(-2px);
+}
+
+/* Font classes applied to joke text */
+#joke.poppins   { font-family: 'Poppins', sans-serif; }
+#joke.roboto    { font-family: 'Roboto', sans-serif; }
+#joke.comic     { font-family: 'Comic Sans MS', cursive, sans-serif; }
+#joke.georgia   { font-family: 'Georgia', serif; }
+
+/* Fixed background mode override */
+body.bg-fixed {
+    background: #1e1e1e !important;
+    transition: none !important;
+}
+
+/* Responsive tweaks */
 @media (max-width: 400px) {
     .controls {
         gap: 12px;
@@ -151,103 +293,11 @@ button:hover {
         bottom: 12px;
         right: 12px;
     }
-}
-/* Settings button */
-.settings-btn {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  background: rgba(255,152,0,0.25);
-  border: none;
-  color: white;
-  font-size: 1.8rem;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 100;
-  opacity: 0.85;
-  transition: all 0.2s;
-}
-
-.settings-btn:hover { opacity: 1; transform: scale(1.08); }
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  z-index: 200;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal.active { display: flex; }
-
-.modal-content {
-  background: #222;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 380px;
-  padding: 24px;
-  color: #fff;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  color: #aaa;
-  font-size: 2.2rem;
-  cursor: pointer;
-}
-
-.setting-item {
-  margin-bottom: 24px;
-}
-
-.setting-item label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 1.1rem;
-}
-
-.setting-item select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  background: #333;
-  color: white;
-  font-size: 1rem;
-}
-
-.save-btn {
-  background: #ff9800;
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 50px;
-  width: 100%;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-/* Font classes */
-#joke.poppins   { font-family: 'Poppins', sans-serif; }
-#joke.roboto    { font-family: 'Roboto', sans-serif; }
-#joke.comic     { font-family: 'Comic Sans MS', cursive, sans-serif; }
-#joke.georgia   { font-family: 'Georgia', serif; }
-
-/* Fixed background */
-body.bg-fixed {
-  background: #1e1e1e !important;
-  transition: none !important;
+    .settings-btn {
+        top: 12px;
+        right: 12px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.6rem;
+    }
 }
