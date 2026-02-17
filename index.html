@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Jokes Generator</title>
+    <title>Franknktyrn Jokes</title>
 
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#ff9800">
+    <meta name="theme-color" content="#7b2cbf">
     <meta name="description" content="Random jokes, puns, one-liners, dad jokes and your personal favorites. Works offline!">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,14 +19,14 @@
 </head>
 <body>
 
-<!-- Splash Screen -->
+<!-- Full-screen splash screen with your logo -->
 <div id="splash-screen">
-  <img src="logo.png" alt="Joke Generator Logo">
+  <img src="/logo.png" alt="Franknktyrn Logo">
 </div>
 
-<div class="container" style="display:none;">
+<div class="container" style="display: none;">
 
-    <!-- Category Selection -->
+    <!-- Category Selection Screen -->
     <div id="category-screen" class="screen active">
         <h2>Choose your humor style</h2>
         <div class="category-buttons">
@@ -95,8 +95,8 @@
 </audio>
 
 <script src="script.js"></script>
+
 <script>
-    // Service worker registration
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
@@ -105,13 +105,17 @@
         });
     }
 
-    // Splash screen logic
+    // Splash screen hide
     window.addEventListener('load', () => {
         setTimeout(() => {
-            document.getElementById('splash-screen').style.display = 'none';
-            document.querySelector('.container').style.display = 'block';
-        }, 2000); // splash shown for 2 seconds
+            const splash = document.getElementById('splash-screen');
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+                document.querySelector('.container').style.display = 'block';
+            }, 600);
+        }, 1800);
     });
 </script>
 </body>
-        </html>
+</html>
