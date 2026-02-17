@@ -18,7 +18,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
+
+<!-- Splash Screen -->
+<div id="splash-screen">
+  <img src="logo.png" alt="Joke Generator Logo">
+</div>
+
+<div class="container" style="display:none;">
 
     <!-- Category Selection -->
     <div id="category-screen" class="screen active">
@@ -90,6 +96,7 @@
 
 <script src="script.js"></script>
 <script>
+    // Service worker registration
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
@@ -97,6 +104,14 @@
                 .catch(err => console.log('Service Worker registration failed:', err));
         });
     }
+
+    // Splash screen logic
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }, 2000); // splash shown for 2 seconds
+    });
 </script>
 </body>
-    </html>
+        </html>
