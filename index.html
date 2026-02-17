@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jokes Generator</title>
 
-    <!-- PWA essentials -->
+    <!-- PWA configuration -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#ff9800">
     <meta name="description" content="Random jokes, puns, one-liners, dad jokes and your personal favorites. Works offline!">
@@ -13,11 +13,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- Fonts & styles -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 <div class="container">
 
@@ -33,30 +33,34 @@
         </div>
     </div>
 
-    <!-- Joke Screen -->
+    <!-- Joke Display Screen -->
     <div id="joke-screen" class="screen">
         <button class="back-btn" onclick="showCategories()">← Back to categories</button>
         <h2 id="category-title">Jokes</h2>
 
         <div id="joke-container">
             <p id="joke">Tap to get a joke!</p>
+            <!-- Share button positioned bottom-right inside joke container -->
+            <button id="shareBtn" onclick="shareJoke()" title="Share joke">🔗</button>
         </div>
 
         <div class="controls">
             <button id="prevBtn" onclick="prevJoke()">← Previous</button>
             <button id="loveBtn" onclick="toggleFavorite()">♡</button>
-            <button id="shareBtn" onclick="shareJoke()">Share 🔗</button>
             <button id="nextBtn" onclick="nextJoke()">Next →</button>
         </div>
     </div>
 
 </div>
 
+<!-- Laugh sound effect -->
 <audio id="laughSound" preload="auto">
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-cartoon-quick-satisfied-laugh-2149.mp3" type="audio/mpeg">
 </audio>
 
 <script src="script.js"></script>
+
+<!-- Service Worker registration -->
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
