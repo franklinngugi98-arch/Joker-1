@@ -3,26 +3,35 @@ const categories = {
         name: "General Jokes",
         api: "https://official-joke-api.appspot.com/random_joke",
         parse: data => `${data.setup} - ${data.punchline}`,
-        offline: [ /* your original list */ ]
+        offline: [
+            "How do you stop a bull from charging? - Cancel its credit card!",
+            // ... (your full original offline lists here – keep as-is)
+        ]
     },
     puns: {
         name: "Puns",
         api: "https://v2.jokeapi.dev/joke/Any?type=single",
         parse: data => data.joke,
-        offline: [ /* your original list */ ]
+        offline: [
+            // ... your puns list
+        ]
     },
     onelines: {
         name: "One-liners",
         api: "https://v2.jokeapi.dev/joke/Any?type=single",
         parse: data => data.joke,
-        offline: [ /* your original list */ ]
+        offline: [
+            // ... your one-liners list
+        ]
     },
     dad: {
         name: "Dad Jokes",
         api: "https://icanhazdadjoke.com/",
         headers: { "Accept": "application/json" },
         parse: data => data.joke,
-        offline: [ /* your original list */ ]
+        offline: [
+            // ... your dad jokes list
+        ]
     },
     favorites: {
         name: "My Favorites ❤️",
@@ -41,9 +50,6 @@ let settings = {
   font: localStorage.getItem('jokeFont') || 'Poppins',
   bgMode: localStorage.getItem('bgMode') || 'random'
 };
-
-// Track seen jokes per category to prevent repeats
-const seenJokes = {}; // key: category key, value: Set of seen joke strings
 
 function applySettings() {
   const jokeEl = document.getElementById('joke');
@@ -92,13 +98,11 @@ function startCategory(key) {
   historyIndex = -1;
   currentJokeText = "";
 
-  if (!seenJokes[key]) seenJokes[key] = new Set();
-
   document.getElementById("loveBtn").classList.remove("liked");
   document.getElementById("loveBtn").innerText = "♡";
 
   const jokeEl = document.getElementById("joke");
-  jokeEl.innerText = "Loading joke...";
+  jokeEl.innerText = "Tap to get a joke!";
   jokeEl.style.opacity = 1;
 
   applySettings();
@@ -134,9 +138,8 @@ async function getJoke() {
   document.getElementById("laughSound").play().catch(() => {});
 
   setTimeout(async () => {
-    let text = "Couldn't load a joke... using offline fallback!";
+    let text = "Couldn't load a joke... try again!";
 
-    // Try API first
     try {
       const options = currentCategory.headers ? { headers: currentCategory.headers } : {};
       const response = await fetch(currentCategory.api, options);
@@ -144,26 +147,12 @@ async function getJoke() {
       const data = await response.json();
       text = currentCategory.parse(data);
     } catch (err) {
-      console.log("API failed, using offline:", err);
-      // Offline fallback with no-repeat logic
-      const key = Object.keys(categories).find(k => categories[k] === currentCategory);
-      const seen = seenJokes[key] || new Set();
-      const available = currentCategory.offline.filter(j => !seen.has(j));
-
-      if (available.length > 0) {
-        text = available[Math.floor(Math.random() * available.length)];
-        seen.add(text);
-        seenJokes[key] = seen;
-      } else {
-        // All seen → reset and pick any
-        seenJokes[key] = new Set();
-        text = currentCategory.offline[Math.floor(Math.random() * currentCategory.offline.length)];
-        seenJokes[key].add(text);
-      }
+      console.log("Using offline fallback");
+      const offlineList = currentCategory.offline || [];
+      text = offlineList[Math.floor(Math.random() * offlineList.length)] || text;
     }
 
     currentJokeText = text;
-    jokeHistory = jokeHistory.slice(0, historyIndex + 1);
     jokeHistory.push(text);
     historyIndex = jokeHistory.length - 1;
 
@@ -241,5 +230,5 @@ function nextJoke() {
   }
 }
 
-// Apply settings on page load
+// Apply settings on load
 applySettings();
