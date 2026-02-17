@@ -47,32 +47,39 @@ button {
     font-size: 1.2rem;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.25s ease;
 }
 
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255,152,0,0.5);
-}
-
-/* Back button – moved to left side + better color */
-.back-btn {
-    background: #ff5722;           /* stronger orange/red tone */
-    padding: 10px 20px;
-    font-size: 1rem;
-    margin-bottom: 30px;
-    float: left;                   /* aligns left */
-    border-radius: 30px;
-    min-width: 140px;
-    text-align: center;
-}
-
-.back-btn:hover {
-    background: #e64a19;
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255,152,0,0.4);
 }
 
-/* Joke container with relative positioning for share icon */
+/* Back button – minimal, left-aligned, subtle */
+.back-btn {
+    background: rgba(255, 152, 0, 0.15);
+    color: #ff9800;
+    border: 1px solid rgba(255, 152, 0, 0.35);
+    padding: 8px 18px;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.18s ease, opacity 0.18s ease;
+    opacity: 0.9;
+    box-shadow: none;
+}
+
+.back-btn:hover,
+.back-btn:focus {
+    background: rgba(255, 152, 0, 0.25);
+    opacity: 1;
+    transform: none;           /* no lift → reduces perceived lag */
+    box-shadow: none;
+}
+
+/* Joke container */
 #joke-container {
     position: relative;
     background: rgba(255,255,255,0.08);
@@ -87,7 +94,7 @@ button:hover {
     line-height: 1.5;
 }
 
-/* Share icon – bottom right inside joke box */
+/* Share button inside joke container */
 #shareBtn {
     position: absolute;
     bottom: 16px;
@@ -99,13 +106,13 @@ button:hover {
     cursor: pointer;
     padding: 8px;
     opacity: 0.7;
-    transition: opacity 0.3s, transform 0.2s;
+    transition: opacity 0.25s, transform 0.2s;
 }
 
 #shareBtn:hover,
 #shareBtn:focus {
     opacity: 1;
-    transform: scale(1.15);
+    transform: scale(1.12);
 }
 
 /* Controls bar */
@@ -124,6 +131,7 @@ button:hover {
     color: #ff5252;
     cursor: pointer;
     padding: 0 24px;
+    transition: transform 0.2s;
 }
 
 #loveBtn.liked {
@@ -137,7 +145,7 @@ button:hover {
     min-width: 110px;
 }
 
-/* Joke text fade */
+/* Joke text fade animation */
 #joke {
     opacity: 0;
     transition: opacity 0.7s ease;
@@ -151,24 +159,25 @@ button:hover {
     position: fixed;
     top: 16px;
     right: 16px;
-    background: rgba(255,152,0,0.25);
+    background: rgba(255,152,0,0.20);
     border: none;
     color: white;
-    font-size: 1.8rem;
-    width: 48px;
-    height: 48px;
+    font-size: 1.7rem;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 100;
-    opacity: 0.85;
-    transition: all 0.25s ease;
+    opacity: 0.8;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+    box-shadow: none;                      /* no shadow */
 }
 
 .settings-btn:hover,
 .settings-btn:focus {
     opacity: 1;
-    transform: scale(1.1);
-    box-shadow: 0 0 12px rgba(255,152,0,0.5);
+    transform: scale(1.08);
+    box-shadow: none;
 }
 
 /* Modal overlay */
@@ -187,7 +196,7 @@ button:hover {
     display: flex;
 }
 
-/* Modal box */
+/* Modal content */
 .modal-content {
     background: #222;
     border-radius: 16px;
@@ -222,7 +231,7 @@ button:hover {
     color: #ff9800;
 }
 
-/* Setting rows */
+/* Setting items */
 .setting-item {
     margin-bottom: 24px;
 }
@@ -245,7 +254,7 @@ button:hover {
     appearance: none;
 }
 
-/* Save button */
+/* Save button in modal */
 .save-btn {
     background: #ff9800;
     color: white;
@@ -263,19 +272,19 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* Font classes applied to joke text */
+/* Font classes for joke text */
 #joke.poppins   { font-family: 'Poppins', sans-serif; }
 #joke.roboto    { font-family: 'Roboto', sans-serif; }
 #joke.comic     { font-family: 'Comic Sans MS', cursive, sans-serif; }
 #joke.georgia   { font-family: 'Georgia', serif; }
 
-/* Fixed background mode override */
+/* Fixed background mode */
 body.bg-fixed {
     background: #1e1e1e !important;
     transition: none !important;
 }
 
-/* Responsive tweaks */
+/* Responsive adjustments */
 @media (max-width: 400px) {
     .controls {
         gap: 12px;
@@ -296,8 +305,12 @@ body.bg-fixed {
     .settings-btn {
         top: 12px;
         right: 12px;
-        width: 44px;
-        height: 44px;
+        width: 42px;
+        height: 42px;
         font-size: 1.6rem;
+    }
+    .back-btn {
+        padding: 7px 14px;
+        font-size: 0.9rem;
     }
 }
